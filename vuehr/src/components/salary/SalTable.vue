@@ -11,6 +11,7 @@
             :value="item.id">
           </el-option>
         </el-select>
+        <el-button type="primary" size="mini" style="margin-left: 5px" icon="el-icon-search" >搜索</el-button>
       </el-header>
       <el-main>Main</el-main>
     </el-container>

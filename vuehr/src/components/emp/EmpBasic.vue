@@ -901,12 +901,14 @@
 //        delete this.emp.nation;
 //        delete this.emp.politicsStatus;
         delete this.emp.workAge;
+        delete this.emp.salary;
         delete this.emp.notWorkDate;
         this.dialogVisible = true;
       },
       showAddEmpView(){
         this.dialogTitle = "添加员工";
         this.dialogVisible = true;
+        this.emp = [];
         var _this = this;
         this.getRequest("/employee/basic/maxWorkID").then(resp=> {
           if (resp && resp.status == 200) {

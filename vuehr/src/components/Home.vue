@@ -2,13 +2,13 @@
   <div>
     <el-container class="home-container">
       <el-header class="home-header">
-        <span class="home_title">微人事</span>
+        <span class="home_title">WQ-人事</span>
         <div style="display: flex;align-items: center;margin-right: 7px">
           <el-badge style="margin-right: 30px" :is-dot="this.$store.state.nfDot">
             <i class="fa fa-bell-o" @click="goChat" style="cursor: pointer"></i>
           </el-badge>
           <el-dropdown @command="handleCommand">
-  <span class="el-dropdown-link home_userinfo" style="display: flex;align-items: center">
+            <span class="el-dropdown-link home_userinfo" style="display: flex;align-items: center">
     {{user.name}}
     <i><img v-if="user.userface!=''" :src="user.userface"
             style="width: 40px;height: 40px;margin-right: 5px;margin-left: 5px;border-radius: 40px"/></i>
@@ -16,6 +16,7 @@
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>个人中心</el-dropdown-item>
               <el-dropdown-item>设置</el-dropdown-item>
+              <el-dropdown-item command="modifyPwd">修改密码</el-dropdown-item>
               <el-dropdown-item command="logout" divided>注销</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -56,6 +57,31 @@
         </el-container>
       </el-container>
     </el-container>
+
+    <div style="text-align: left">
+      <el-dialog
+        title=""
+        customClass="dialog-repwd"
+        :visible.sync="dialogVisible"
+         width="35%">
+        <p style="font-size: 16px;text-align: center;color: #333333;margin-bottom: 30px;">修改密码</p>
+        <el-form :rules="rules"
+                 label-width="0px"
+                 ref="ruleForm"
+                 :model="loginForm">
+          <el-form-item prop="pwd">
+            <el-input type="password" v-model="loginForm.pwd" auto-complete="off" placeholder="新密码"></el-input>
+          </el-form-item>
+          <el-form-item prop="rePwd">
+            <el-input type="password" v-model="loginForm.rePwd" auto-complete="off" placeholder="确认密码"></el-input>
+          </el-form-item>
+          <el-form-item style="width: 100%;text-align: center;">
+            <el-button type="primary" @click.native.prevent="submitClick(loginForm)" style="width: 30%">确认</el-button>
+          </el-form-item>
+        </el-form>
+      </el-dialog>
+    </div>
+
   </div>
 </template>
 <script>
@@ -65,6 +91,12 @@
       this.loadNF();
     },
     methods: {
+      submitClick(param) {
+        param.username = this.$store.state.user.username
+        this.postRequest("",param).then(resp=> {
+          console.log(resp);
+        })
+          },
       loadNF(){
         var _this = this;
         this.getRequest("/chat/sysmsgs").then(resp=> {
@@ -110,12 +142,46 @@
               message: '取消'
             });
           });
+        }else if (cmd == 'modifyPwd'){
+          _this.dialogVisible = true
+          _this.loginForm.pwd = ''
+          _this.loginForm.rePwd = ''
         }
       }
     },
     data(){
+      var validatePass = (rule, value, callback) => {
+        console.log(value);
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.loginForm.rePwd !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
+        }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        console.log(value);
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.loginForm.pwd) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
       return {
-        isDot: false
+        rules: {
+          pwd: [{validator: validatePass, trigger: 'blur'}],
+          rePwd: [{ validator: validatePass2,  trigger: 'blur'}]
+        },
+        isDot: false,
+        dialogVisible: true,
+        loginForm: {
+          pwd: '',
+          rePwd: ''
+        }
       }
     },
     computed: {
@@ -129,6 +195,9 @@
   }
 </script>
 <style>
+  .dialog-repwd {
+    padding:0 ;
+  }
   .home-container {
     height: 100%;
     position: absolute;
