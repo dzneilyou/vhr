@@ -58,7 +58,7 @@
       </el-container>
     </el-container>
 
-    <div style="text-align: left">
+    <div style="text-align: left;">
       <el-dialog
         title=""
         customClass="dialog-repwd"
@@ -177,7 +177,7 @@
           rePwd: [{ validator: validatePass2,  trigger: 'blur'}]
         },
         isDot: false,
-        dialogVisible: true,
+        dialogVisible: false,
         loginForm: {
           pwd: '',
           rePwd: ''

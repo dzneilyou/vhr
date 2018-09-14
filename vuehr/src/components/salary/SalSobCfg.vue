@@ -183,7 +183,7 @@
       loadEmps(){
         this.tableLoading = true;
         var _this = this;
-        this.getRequest("/salary/sobcfg/emp?page=" + this.currentPage + "&size=10").then(resp=> {
+        this.getRequest("/salary/sobcfg/emp?page=" + this.currentPage + "&size=15").then(resp=> {
           _this.tableLoading = false;
           if (resp && resp.status == 200) {
             var data = resp.data;
