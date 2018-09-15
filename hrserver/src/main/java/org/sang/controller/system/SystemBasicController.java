@@ -2,6 +2,8 @@ package org.sang.controller.system;
 
 import org.sang.bean.*;
 import org.sang.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/system/basic")
 public class SystemBasicController {
+
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     RoleService roleService;
     @Autowired

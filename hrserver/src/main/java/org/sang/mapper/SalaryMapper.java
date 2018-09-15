@@ -9,7 +9,7 @@ import java.util.List;
  * Created by sang on 2018/1/24.
  */
 public interface SalaryMapper {
-    int addSalary(@Param("salary") Salary salary);
+    int  addSalary(@Param("salary") Salary salary);
 
     List<Salary> getAllSalary();
 

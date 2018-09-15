@@ -85,20 +85,21 @@
             <result property="name" column="psname"/>
         </association>
         <association property="salary" javaType="org.sang.bean.Salary">
-            <id column="sid" jdbcType="INTEGER" property="id" />
-            <result column="bonus" jdbcType="INTEGER" property="bonus" />
-            <result column="lunchSalary" jdbcType="INTEGER" property="lunchSalary" />
-            <result column="trafficSalary" jdbcType="INTEGER" property="trafficSalary" />
-            <result column="basicSalary" jdbcType="INTEGER" property="basicSalary" />
-            <result column="allSalary" jdbcType="INTEGER" property="allSalary" />
-            <result column="pensionBase" jdbcType="INTEGER" property="pensionBase" />
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <result column="basicSalary" jdbcType="DECIMAL" property="basicSalary" />
+            <result column="bonus" jdbcType="DECIMAL" property="bonus" />
+            <result column="lunchSalary" jdbcType="DECIMAL" property="lunchSalary" />
+            <result column="trafficSalary" jdbcType="DECIMAL" property="trafficSalary" />
+            <result column="allSalary" jdbcType="DECIMAL" property="allSalary" />
+            <result column="pensionBase" jdbcType="DECIMAL" property="pensionBase" />
             <result column="pensionPer" jdbcType="REAL" property="pensionPer" />
             <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
             <result column="medicalBase" jdbcType="INTEGER" property="medicalBase" />
             <result column="medicalPer" jdbcType="REAL" property="medicalPer" />
-            <result column="accumulationFundBase" jdbcType="INTEGER" property="accumulationFundBase" />
+            <result column="accumulationFundBase" jdbcType="DECIMAL" property="accumulationFundBase" />
             <result column="accumulationFundPer" jdbcType="REAL" property="accumulationFundPer" />
-            <result column="sname" jdbcType="VARCHAR" property="name" />
+            <result column="name" jdbcType="VARCHAR" property="name" />
+            <result column="hourlyWage" jdbcType="DECIMAL" property="hourlywage" />
         </association>
     </resultMap>
     <select id="getEmployeeByPage" resultMap="BaseResultMap">

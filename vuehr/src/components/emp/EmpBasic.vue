@@ -98,7 +98,8 @@
                   聘用形式:
                   <el-radio-group v-model="emp.engageForm">
                     <el-radio label="劳动合同">劳动合同</el-radio>
-                    <el-radio style="margin-left: 15px" label="劳务合同">劳务合同</el-radio>
+                    <el-radio style="margin-left: 15px" label="外包">外包</el-radio>
+                    <el-radio style="margin-left: 15px" label="外包">其它</el-radio>
                   </el-radio-group>
                 </el-col>
               </el-row>
@@ -570,7 +571,8 @@
                 <el-form-item label="聘用形式:" prop="engageForm">
                   <el-radio-group v-model="emp.engageForm">
                     <el-radio label="劳动合同">劳动合同</el-radio>
-                    <el-radio style="margin-left: 15px" label="劳务合同">劳务合同</el-radio>
+                    <el-radio style="margin-left: 15px" label="外包">外包</el-radio>
+                    <el-radio style="margin-left: 15px" label="其它">其它</el-radio>
                   </el-radio-group>
                 </el-form-item>
               </div>

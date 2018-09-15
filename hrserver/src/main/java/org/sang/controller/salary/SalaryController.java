@@ -33,7 +33,8 @@ public class SalaryController {
 
     @RequestMapping(value = "/salary", method = RequestMethod.GET)
     public List<Salary> salaries() {
-        return salaryService.getAllSalary();
+        List<Salary> allSalary = salaryService.getAllSalary();
+        return allSalary;
     }
 
     @RequestMapping(value = "/salary", method = RequestMethod.PUT)

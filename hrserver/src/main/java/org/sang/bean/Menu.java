@@ -5,9 +5,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
-/**
- * Created by sang on 2017/12/28.
- */
+/** 
+* @FileName: Menu.java
+* @Description: 用一句话描述这个类的作用
+* @author dznei
+* @date 2018/9/14 20:42 
+*/
 public class Menu {
     private Long id;
     private String url;

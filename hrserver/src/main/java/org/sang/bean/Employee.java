@@ -3,7 +3,12 @@ package org.sang.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
-
+/** 
+* @FileName: Employee.java
+* @Description: 用一句话描述这个类的作用
+* @author dznei
+* @date 2018/9/14 20:42 
+*/
 public class Employee {
     private Long id;
     private String name;

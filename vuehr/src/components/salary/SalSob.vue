@@ -84,6 +84,15 @@
                 label="基数">
               </el-table-column>
             </el-table-column>
+
+            <el-table-column label="时薪" align="center">
+              <el-table-column
+                width="70"
+                prop="hourlywage"
+                label="时薪">
+              </el-table-column>
+            </el-table-column>
+
             <el-table-column label="操作" align="center">
               <el-table-column label="编辑" align="center">
                 <template slot-scope="scope">
@@ -285,7 +294,8 @@
           medicalBase: '',
           medicalPer: '',
           accumulationFundBase: '',
-          accumulationFundPer: ''
+          hourlywage: '',
+
         }
       };
     },

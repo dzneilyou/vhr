@@ -1,8 +1,11 @@
 package org.sang.bean;
 
-/**
- * Created by sang on 2018/2/2.
- */
+/** 
+* @FileName: SysMsg.java
+* @Description: 用一句话描述这个类的作用
+* @author dznei
+* @date 2018/9/14 20:43 
+*/
 public class SysMsg {
     private Long id;
     private Long mid;

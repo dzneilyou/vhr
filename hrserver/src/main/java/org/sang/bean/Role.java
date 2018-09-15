@@ -1,8 +1,11 @@
 package org.sang.bean;
 
-/**
- * Created by sang on 2017/12/28.
- */
+/** 
+* @FileName: Role.java
+* @Description: 用一句话描述这个类的作用
+* @author dznei
+* @date 2018/9/14 20:43 
+*/
 public class Role {
     private Long id;
     private String name;

@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Created by sang on 2017/12/28.
- */
+/** 
+* @FileName: Hr.java
+* @Description: 用一句话描述这个类的作用
+* @author dznei
+* @date 2018/9/14 20:43
+*/
 public class Hr implements UserDetails {
     private Long id;
     private String name;

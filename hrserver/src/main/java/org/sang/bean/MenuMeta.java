@@ -1,8 +1,11 @@
 package org.sang.bean;
 
-/**
- * Created by sang on 2017/12/30.
- */
+/** 
+* @FileName: MenuMeta.java
+* @Description: 用一句话描述这个类的作用
+* @author dznei
+* @date 2018/9/14 20:42 
+*/
 public class MenuMeta {
 
     private boolean keepAlive;

@@ -21,7 +21,8 @@ public class SalaryService {
     }
 
     public List<Salary> getAllSalary() {
-        return salaryMapper.getAllSalary();
+        List<Salary> allSalary = salaryMapper.getAllSalary();
+        return allSalary;
     }
 
     public int updateSalary(Salary salary) {

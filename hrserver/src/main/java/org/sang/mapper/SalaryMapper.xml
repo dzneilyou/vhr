@@ -3,41 +3,68 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.sang.mapper.SalaryMapper">
+
+    <resultMap id="BaseResultMap" type="org.sang.bean.Salary">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="basicSalary" jdbcType="DECIMAL" property="basicSalary" />
+        <result column="bonus" jdbcType="DECIMAL" property="bonus" />
+        <result column="lunchSalary" jdbcType="DECIMAL" property="lunchSalary" />
+        <result column="trafficSalary" jdbcType="DECIMAL" property="trafficSalary" />
+        <result column="allSalary" jdbcType="DECIMAL" property="allSalary" />
+        <result column="pensionBase" jdbcType="DECIMAL" property="pensionBase" />
+        <result column="pensionPer" jdbcType="REAL" property="pensionPer" />
+        <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
+        <result column="medicalBase" jdbcType="INTEGER" property="medicalBase" />
+        <result column="medicalPer" jdbcType="REAL" property="medicalPer" />
+        <result column="accumulationFundBase" jdbcType="DECIMAL" property="accumulationFundBase" />
+        <result column="accumulationFundPer" jdbcType="REAL" property="accumulationFundPer" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="hourlyWage" jdbcType="DECIMAL" property="hourlywage" />
+    </resultMap>
+
+
     <insert id="addSalary" parameterType="org.sang.bean.Salary">
             insert into salary (bonus, lunchSalary,
       trafficSalary, basicSalary,
       pensionBase, pensionPer, createDate,
       medicalBase, medicalPer, accumulationFundBase,
-      accumulationFundPer, name)
+      accumulationFundPer, name,hourlyWage)
     values (#{salary.bonus,jdbcType=INTEGER}, #{salary.lunchSalary,jdbcType=INTEGER},
       #{salary.trafficSalary,jdbcType=INTEGER}, #{salary.basicSalary,jdbcType=INTEGER},
       #{salary.pensionBase,jdbcType=INTEGER}, #{salary.pensionPer,jdbcType=REAL}, #{salary.createDate,jdbcType=TIMESTAMP},
       #{salary.medicalBase,jdbcType=INTEGER}, #{salary.medicalPer,jdbcType=REAL}, #{salary.accumulationFundBase,jdbcType=INTEGER},
-      #{salary.accumulationFundPer,jdbcType=REAL}, #{salary.name,jdbcType=VARCHAR})
+      #{salary.accumulationFundPer,jdbcType=REAL}, #{salary.name,jdbcType=VARCHAR},#{salary.hourlywage,jdbcType=DECIMAL})
     </insert>
-    <select id="getAllSalary" resultType="org.sang.bean.Salary">
+
+    <!--<insert id="addSalary" parameterType="org.sang.bean.Salary">
+        insert into salary (
+        id,basicSalary,bonus,lunchSalary,trafficSalary,allSalary,pensionBase,pensionPer,createDate,medicalBase,medicalPer,accumulationFundBase,accumulationFundPer,name,hourlyWage ) values
+        ( #{item.id,jdbcType=INTEGER},#{item.basicsalary,jdbcType=DECIMAL},#{item.bonus,jdbcType=DECIMAL},#{item.lunchsalary,jdbcType=DECIMAL},#{item.trafficsalary,jdbcType=DECIMAL},#{item.allsalary,jdbcType=DECIMAL},#{item.pensionbase,jdbcType=DECIMAL},#{item.pensionper,jdbcType=REAL},#{item.createdate,jdbcType=TIMESTAMP},#{item.medicalbase,jdbcType=INTEGER},#{item.medicalper,jdbcType=REAL},#{item.accumulationfundbase,jdbcType=DECIMAL},#{item.accumulationfundper,jdbcType=REAL},#{item.name,jdbcType=VARCHAR},#{item.hourlywage,jdbcType=DECIMAL} )
+    </insert>-->
+
+    <select id="getAllSalary" resultMap="BaseResultMap">
         SELECT * FROM salary;
     </select>
     <update id="updateSalary" parameterType="org.sang.bean.Salary">
         update salary
         <set>
             <if test="salary.bonus != null">
-                bonus = #{salary.bonus,jdbcType=INTEGER},
+                bonus = #{salary.bonus,jdbcType=DECIMAL},
             </if>
             <if test="salary.lunchSalary != null">
-                lunchSalary = #{salary.lunchSalary,jdbcType=INTEGER},
+                lunchSalary = #{salary.lunchSalary,jdbcType=DECIMAL},
             </if>
             <if test="salary.trafficSalary != null">
-                trafficSalary = #{salary.trafficSalary,jdbcType=INTEGER},
+                trafficSalary = #{salary.trafficSalary,jdbcType=DECIMAL},
             </if>
             <if test="salary.basicSalary != null">
-                basicSalary = #{salary.basicSalary,jdbcType=INTEGER},
+                basicSalary = #{salary.basicSalary,jdbcType=DECIMAL},
             </if>
             <if test="salary.allSalary != null">
-                allSalary = #{salary.allSalary,jdbcType=INTEGER},
+                allSalary = #{salary.allSalary,jdbcType=DECIMAL},
             </if>
             <if test="salary.pensionBase != null">
-                pensionBase = #{salary.pensionBase,jdbcType=INTEGER},
+                pensionBase = #{salary.pensionBase,jdbcType=DECIMAL},
             </if>
             <if test="salary.pensionPer != null">
                 pensionPer = #{salary.pensionPer,jdbcType=REAL},
@@ -52,13 +79,16 @@
                 medicalPer = #{salary.medicalPer,jdbcType=REAL},
             </if>
             <if test="salary.accumulationFundBase != null">
-                accumulationFundBase = #{salary.accumulationFundBase,jdbcType=INTEGER},
+                accumulationFundBase = #{salary.accumulationFundBase,jdbcType=DECIMAL},
             </if>
             <if test="salary.accumulationFundPer != null">
                 accumulationFundPer = #{salary.accumulationFundPer,jdbcType=REAL},
             </if>
             <if test="salary.name != null">
                 name = #{salary.name,jdbcType=VARCHAR},
+            </if>
+            <if test="salary.hourlyWage != null">
+                name = #{salary.hourlyWage,jdbcType=DECIMAL},
             </if>
         </set>
         where id = #{salary.id,jdbcType=INTEGER}

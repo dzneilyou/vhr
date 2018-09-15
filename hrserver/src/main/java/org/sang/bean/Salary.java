@@ -1,22 +1,83 @@
 package org.sang.bean;
 
 import java.util.Date;
-
+/** 
+* @FileName: Salary.java
+* @Description: 用一句话描述这个类的作用
+* @author dznei
+* @date 2018/9/14 20:43 
+*/
 public class Salary {
+
     private Integer id;
-    private Integer bonus;
-    private Integer lunchSalary;
-    private Integer trafficSalary;
-    private Integer basicSalary;
-    private Integer allSalary;
-    private Integer pensionBase;
+
+    /**
+     * åŸºæœ¬å·¥èµ„
+     */
+    private Long basicSalary;
+
+    /**
+     * å¥–é‡‘
+     */
+    private Long bonus;
+
+    /**
+     * å�ˆé¤�è¡¥åŠ©
+     */
+    private Long lunchSalary;
+
+    /**
+     * äº¤é€šè¡¥åŠ©
+     */
+    private Long trafficSalary;
+
+    /**
+     * åº”å�‘å·¥èµ„
+     */
+    private Long allSalary;
+
+    /**
+     * å…»è€�é‡‘åŸºæ•°
+     */
+    private Long pensionBase;
+
+    /**
+     * å…»è€�é‡‘æ¯”çŽ‡
+     */
     private Float pensionPer;
+
+    /**
+     * å�¯ç”¨æ—¶é—´
+     */
     private Date createDate;
+
+    /**
+     * åŒ»ç–—åŸºæ•°
+     */
     private Integer medicalBase;
+
+    /**
+     * åŒ»ç–—ä¿�é™©æ¯”çŽ‡
+     */
     private Float medicalPer;
-    private Integer accumulationFundBase;
+
+    /**
+     * å…¬ç§¯é‡‘åŸºæ•°
+     */
+    private Long accumulationFundBase;
+
+    /**
+     * å…¬ç§¯é‡‘æ¯”çŽ‡
+     */
     private Float accumulationFundPer;
+
     private String name;
+
+    /**
+     * æ—¶è–ª
+     */
+    private Long hourlywage;
+
 
     public Integer getId() {
         return id;
@@ -26,51 +87,51 @@ public class Salary {
         this.id = id;
     }
 
-    public Integer getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(Integer bonus) {
-        this.bonus = bonus;
-    }
-
-    public Integer getLunchSalary() {
-        return lunchSalary;
-    }
-
-    public void setLunchSalary(Integer lunchSalary) {
-        this.lunchSalary = lunchSalary;
-    }
-
-    public Integer getTrafficSalary() {
-        return trafficSalary;
-    }
-
-    public void setTrafficSalary(Integer trafficSalary) {
-        this.trafficSalary = trafficSalary;
-    }
-
-    public Integer getBasicSalary() {
+    public Long getBasicSalary() {
         return basicSalary;
     }
 
-    public void setBasicSalary(Integer basicSalary) {
+    public void setBasicSalary(Long basicSalary) {
         this.basicSalary = basicSalary;
     }
 
-    public Integer getAllSalary() {
+    public Long getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(Long bonus) {
+        this.bonus = bonus;
+    }
+
+    public Long getLunchSalary() {
+        return lunchSalary;
+    }
+
+    public void setLunchSalary(Long lunchSalary) {
+        this.lunchSalary = lunchSalary;
+    }
+
+    public Long getTrafficSalary() {
+        return trafficSalary;
+    }
+
+    public void setTrafficSalary(Long trafficSalary) {
+        this.trafficSalary = trafficSalary;
+    }
+
+    public Long getAllSalary() {
         return allSalary;
     }
 
-    public void setAllSalary(Integer allSalary) {
+    public void setAllSalary(Long allSalary) {
         this.allSalary = allSalary;
     }
 
-    public Integer getPensionBase() {
+    public Long getPensionBase() {
         return pensionBase;
     }
 
-    public void setPensionBase(Integer pensionBase) {
+    public void setPensionBase(Long pensionBase) {
         this.pensionBase = pensionBase;
     }
 
@@ -106,11 +167,11 @@ public class Salary {
         this.medicalPer = medicalPer;
     }
 
-    public Integer getAccumulationFundBase() {
+    public Long getAccumulationFundBase() {
         return accumulationFundBase;
     }
 
-    public void setAccumulationFundBase(Integer accumulationFundBase) {
+    public void setAccumulationFundBase(Long accumulationFundBase) {
         this.accumulationFundBase = accumulationFundBase;
     }
 
@@ -128,5 +189,13 @@ public class Salary {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getHourlywage() {
+        return hourlywage;
+    }
+
+    public void setHourlywage(Long hourlywage) {
+        this.hourlywage = hourlywage;
     }
 }

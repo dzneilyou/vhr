@@ -95,7 +95,14 @@ public class EmpService {
     }
 
     public int addEmps(List<Employee> emps) {
-        return empMapper.addEmps(emps);
+        int i = 0;
+        try {
+            i = empMapper.addEmps(emps);
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + ":" + e);
+        }
+
+        return i;
     }
 
     public List<Employee> getEmployeeByPageShort(Integer page, Integer size) {

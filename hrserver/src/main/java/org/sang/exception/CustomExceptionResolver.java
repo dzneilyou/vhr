@@ -24,6 +24,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
         if (e instanceof DataIntegrityViolationException) {
             map.put("msg", "该角色尚有关联的资源或用户，删除失败!");
         }else{
+            System.out.println(e.getMessage()+":"+e);
             map.put("msg", "操作失败!");
         }
         mv.addAllObjects(map);
