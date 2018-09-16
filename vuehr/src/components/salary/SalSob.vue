@@ -136,6 +136,7 @@
             <el-step title="养老金"></el-step>
             <el-step title="医疗保险"></el-step>
             <el-step title="公积金"></el-step>
+            <el-step title="时薪"></el-step>
             <el-step title="启用时间"></el-step>
           </el-steps>
           <div style="margin-left: 30px;display: flex;justify-content: center;align-items: center;width: 80%;">
@@ -252,7 +253,20 @@
                 </el-input>
               </div>
             </div>
+
             <div v-show="index==7">
+              时薪：
+              <el-input
+                placeholder="请输入时薪..."
+                size="mini"
+                style="width: 200px"
+                type="number"
+                @keyup.enter.native="next"
+                v-model="salary.hourlywage">
+              </el-input>
+            </div>
+
+            <div v-show="index==8">
               启用时间：
               <el-date-picker
                 v-model="salary.createDate"
@@ -267,7 +281,7 @@
         </div>
         <div style="display: flex;align-items: center;justify-content: center;padding: 0px;margin: 0px;">
           <el-button round size="mini" v-if="index!=0" @click="index--">上一步</el-button>
-          <el-button type="primary" round size="mini" @click="next" v-text="index==7?'完成':'下一步'"></el-button>
+          <el-button type="primary" round size="mini" @click="next" v-text="index==8?'完成':'下一步'"></el-button>
         </div>
       </el-dialog>
     </div>
@@ -355,8 +369,10 @@
       },
       next(){
         var _this = this;
-        if (this.index == 7) {
-          if(this.salary.createDate&&this.salary.basicSalary&&this.salary.trafficSalary&&this.salary.lunchSalary&&this.salary.bonus&&this.salary.pensionBase&&this.salary.pensionPer&&this.salary.medicalBase&&this.salary.medicalPer&&this.salary.accumulationFundBase&&this.salary.accumulationFundPer){
+        if (this.index == 8) {
+          if(this.salary.createDate||this.salary.basicSalary||this.salary.trafficSalary
+            ||this.salary.lunchSalary||this.salary.bonus||this.salary.pensionBase||this.salary.pensionPer||
+            this.salary.medicalBase||this.salary.medicalPer||this.salary.accumulationFundBase||this.salary.accumulationFundPer||this.salary.hourlywage){
           if (this.salary.id) {//更新
             _this.tableLoading = true;
             this.putRequest("/salary/sob/salary", this.salary).then(resp=> {
@@ -375,15 +391,17 @@
               cancelButtonText: '取消'
             }).then(({value}) => {
               this.salary.name = value;
-              this.postRequest("/salary/sob/salary", this.salary).then(resp=> {
-                if (resp && resp.status == 200) {
-                  var data = resp.data;
-                  _this.$message({type: data.status, message: data.msg});
-                  _this.dialogVisible = false;
-                  _this.index = 0;
-                  _this.loadSalaryCfg();
-                }
-              });
+              if (value){
+                this.postRequest("/salary/sob/salary", this.salary).then(resp=> {
+                  if (resp && resp.status == 200) {
+                    var data = resp.data;
+                    _this.$message({type: data.status, message: data.msg});
+                    _this.dialogVisible = false;
+                    _this.index = 0;
+                    _this.loadSalaryCfg();
+                  }
+                });
+              }else { this.$message({type: 'error', message: '账套名称不能为空!'});}
             }).catch(() => {
             });
           }

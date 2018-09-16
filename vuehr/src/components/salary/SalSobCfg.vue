@@ -87,6 +87,10 @@
                   <el-tag size="mini">医疗保险比率</el-tag>
                   {{scope.row.salary.medicalPer}}
                 </div>
+                <div>
+                  <el-tag size="mini">时薪</el-tag>
+                  {{scope.row.salary.hourlywage}}
+                </div>
               </template>
             </div>
             <el-tag size="mini">{{scope.row.salary?scope.row.salary.name:'暂未设置'}}</el-tag>
